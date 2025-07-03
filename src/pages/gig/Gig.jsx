@@ -3,6 +3,21 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
+const images = [
+    "https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600"
+  ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000
+  };
 function Gig() {
   return (
     <div className="flex justify-center">
@@ -23,11 +38,19 @@ function Gig() {
             </div>
           </div>
 
-          <Slider slidesToShow={1} arrowsScroll={1} className="bg-gray-100">
-  <img className="max-h-[500px] object-contain" src="/assets/img1.jpeg" alt="AI Art 1" />
-  <img className="max-h-[500px] object-contain" src="/assets/img2.jpeg" alt="AI Art 2" />
-  <img className="max-h-[500px] object-contain" src="/assets/img3.jpeg" alt="AI Art 3" />
-</Slider>
+          <Slider {...settings} className = "bg-gray-100">
+        {images.map((url, index) => (
+          <div key={index}>
+            <img src={url} alt={`Slide ${index + 1}`} className="max-h-[1000px] object-contain"  />
+          </div>
+        ))}
+      </Slider>
+
+          {/* <Slider slidesToShow={1} arrowsScroll={1} className="bg-gray-100">
+  <img className="max-h-[500px] object-contain" src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="AI Art 1" />
+  <img className="max-h-[500px] object-contain" src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="AI Art 2" />
+  <img className="max-h-[500px] object-contain" src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="AI Art 3" />
+</Slider> */}
 
           <h2 className="font-normal">About This Gig</h2>
           <p className="font-light leading-6 text-gray-600">[...]</p>
